@@ -9,6 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // проверка заказа
+            if(localStorage.getItem('chicagoOrderAccepted')) {
+                //удаление из списка
+                const chicagoOrder = document.querySelector('.order-row[href="order-chicago-developer.html"]');
+                if(chicagoOrder) {
+                    chicagoOrder.remove();
+                }
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -25,7 +37,7 @@
         <aside class="app-sidebar">
             <nav class="sidebar-nav">
                 <ul class="sidebar-top">
-                    <li><a href="orders-developer.html"  class="active">Доступные заказы</a></li>
+                    <li><a href="orders-developer.html" class="active">Доступные заказы</a></li>
                     <li><a href="my-orders-developer.html">Мои заказы</a></li>
                     <li><a href="profile-developer.html">Профиль</a></li>
                     <li><a href="reviews.html">Отзывы</a></li>
@@ -49,7 +61,7 @@
                         <div class="order-payment">Оплата</div>
                     </div>
                 
-                    <a href="order-chicago.html" class="order-row">
+                    <a href="order-chicago-developer.html" class="order-row">
                         <div class="order-title">
                             <img src="../img/youtube.svg" alt="YouTube">
                             Монтаж выпуска про Чикаго

@@ -273,7 +273,17 @@
             text-align: center;
             padding: 10px 0;
         }
-</style>
+    </style>
+    <script>
+        function declineOrder() {
+            if(confirm('Вы уверены, что хотите отказаться от заказа?')) {
+                // удаление принятого заказа
+                localStorage.removeItem('chicagoOrderAccepted');
+                // возврат на "доступные заказы"
+                window.location.href = 'orders-developer.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="app-container">
@@ -291,7 +301,7 @@
                 <ul class="sidebar-top">
                     
                     <li><a href="orders.html">Доступные заказы</a></li>
-                    <li><a href="#"  class="active">Мои заказы</a></li>
+                    <li><a href="#" class="active">Мои заказы</a></li>
                     <li><a href="#">Отзывы</a></li>
                     <li><a href="#">Личный кабинет</a></li>
                     <li><a href="about.html">О нас</a></li>
@@ -361,7 +371,7 @@
 
         <div class="order-status-container">
             <span class="order-status">Заказ принят</span>
-            <button class="decline-button">Отказаться от заказа</button>
+            <button class="decline-button" onclick="declineOrder()">Отказаться от заказа</button>
         </div>
 
         </main>
@@ -372,6 +382,5 @@
             <p>&copy; 2024 МонтажКлик</p>
         </div>
     </footer>
-    </div>
 </body>
 </html>
