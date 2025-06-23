@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МонтажКлик - О нас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat';
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 58px;
+            width: 354px;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 80px; 
+        }
+
+        .app-sidebar {
+        width: 280px;
+        background-color: #fff;
+        border-right: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 30px 0;
+        box-sizing: border-box;
+        }
+
+        .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        }
+
+        .sidebar-top, .sidebar-bottom {
+        list-style: none;
+        padding: 0 20px;
+        margin: 0;
+        }
+
+        .sidebar-bottom {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        }
+
+        .sidebar-nav a {
+        display: block;
+        padding: 12px 15px;
+        color: #666;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+        background: #f5f5f5;
+        color: #000;
+        }
+
+        .sidebar-nav .active {
+        color: #000;
+        background: #f0f0f0;
+        }
+
+        .logout-link {
+        color: #FF6464 !important;
+        }
+
+        .app-main {
+            flex: 1;
+            padding: 40px;
+            background: #f9f9f9;
+        }
+
+        .hero {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .hero-logo {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .hero-logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #000000;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 24px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            margin-bottom: 40px;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #423E3E;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* группа по 2 колонки */
+            gap: 20px;
+        }
+
+        .feature-item {
+            width: 619px;
+            height: 256px;
+            padding: 25px;
+            border: 1px solid #000;
+            border-radius: 8px;
+            background-color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon-text {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2em;
+            margin: 0; 
+            color: #000;
+        }
+
+        .feature-item p {
+            line-height: 1.5;
+            color: #000;
+            font-size: 26px;
+            align-items: center;
+            margin: 0;
+            padding-left: 55px;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+</style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="../img/logo.png" alt="МонтажКлик">
+            </a>
+        </div>
+    </header>
+
+    <div class="app-container">
+
+        <aside class="app-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="sidebar-top">
+                    <li><a href="orders-developer.html">Доступные заказы</a></li>
+                    <li><a href="my-orders-developer.html">Мои заказы</a></li>
+                    <li><a href="profile-developer.html">Профиль</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="about.html" class="active">О нас</a></li>
+                </ul>
+                
+                <ul class="sidebar-bottom">
+                    <li><a href="#">Поддержка</a></li>
+                    <li><a href="#">О ShariX</a></li>
+                    <li><a href="login.html" class="logout-link">Выйти</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="app-main">
+            <section class="hero">
+                <div class="hero-logo">
+                    <img src="../img/logo.png" alt="МонтажКлик">
+                </div>
+                <h1>Добро пожаловать в МонтажКлик!</h1>
+                <p>Мы рады приветствовать вас на платформе «МонтажКлик» — вашем надежном помощнике в мире видеомонтажа! Наш сервис создан для того, чтобы соединить талантливых видеомонтажеров с теми, кто ищет качественные и профессиональные услуги по монтажу видео.</p>
+            </section>
+
+            <section class="features">
+                <h2>Почему выбирают МонтажКлик?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon-text">
+                        <img src="../img/wide-selection.svg" alt="Широкий выбор" class="feature-icon">
+                        <h3>Широкий выбор специалистов</h3>
+                    </div>
+                <p>У нас вы найдете множество профессионалов с различным опытом и стилем работы.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-text">
+                        <img src="../img/easy-search.svg" alt="Удобный поиск" class="feature-icon">
+                        <h3>Удобный поиск</h3>
+                    </div>
+                <p>Легко находите подходящие заказы по вашим критериям — от стиля монтажа до бюджета.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-text">
+                        <img src="../img/easy-interaction.svg" alt="Простота взаимодействия" class="feature-icon">
+                        <h3>Простота взаимодействия</h3>
+                    </div>
+                    <p>Мы обеспечиваем удобные инструменты для общения и сотрудничества между заказчиками и исполнителями.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-text">
+                        <img src="../img/security.svg" alt="Надежность и безопасность" class="feature-icon">
+                        <h3>Надежность и безопасность</h3>
+                    </div>
+                    <p>Мы гарантируем безопасность сделок и защиту интересов обеих сторон.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta">
+                <p>Присоединяйтесь к "МонтажКлик" и откройте для себя мир возможностей в видеомонтаже.</p>
+                <p>Начните свой путь к созданию великолепных видео уже сегодня!</p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 МонтажКлик. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

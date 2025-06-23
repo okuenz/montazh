@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Мои заказы - МонтажКлик</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 58px;
+            width: 354px;
+        }
+
+        .header .logo {
+            margin-right: auto;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        .app-sidebar {
+            width: 280px;
+            background-color: #fff;
+            border-right: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 30px 0;
+            box-sizing: border-box;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .sidebar-top, .sidebar-bottom {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 12px 15px;
+            color: #666;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        .sidebar-nav .active {
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        .logout-link {
+            color: #FF6464 !important;
+        }
+
+        .app-main {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .page-title {
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .orders-count {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            display: block;
+            text-align: left;
+        }
+
+
+        .orders-header {
+            display: grid;
+            grid-template-columns: 1fr 305px 184px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: normal;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            color: #666;
+            align-items: center;
+        }
+
+        .orders-grid {
+            display: grid;
+            gap: 15px;
+            width: 100%;
+
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 305px 184px;
+            gap: 15px;
+            align-items: center;
+        }
+        .order-card:last-child {
+    border-bottom: none;
+}
+
+        .order-title {
+            font-weight: bold;
+            font-size: 22px;
+            color: #000;
+        }
+
+        .order-status {
+            width: 305px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            cursor: default;
+        }
+
+        .status-accepted {
+            background-color: #FB7B7B;
+            color: #fff;
+        }
+
+        .status-in-progress {
+            background-color: #FFB84D;
+            color: #fff;
+        }
+
+        .details-button {
+            background-color: #00A3FF;
+            color: white;
+            width: 184px;
+            height: 54px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .history-button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 180px;
+            padding-bottom: 20px;
+        }
+
+        .history-button {
+            background-color: #00A3FF;
+            color: white;
+            width: 250px;
+            height: 54px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="../img/logo.png" alt="МонтажКлик">
+            </a>
+        </div>
+    </header>
+
+    <div class="app-container">
+
+        <aside class="app-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="sidebar-top">
+                    <li><a href="my-orders-developer.html" class="active">Мои заказы</a></li>
+                    <li><a href="profile-developer.html">Профиль</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                </ul>
+                
+                <ul class="sidebar-bottom">
+                    <li><a href="#">Поддержка</a></li>
+                    <li><a href="#">О ShariX</a></li>
+                    <li><a href="login.html" class="logout-link">Выйти</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="app-main">
+            <div class="container">
+                <h1 class="page-title">Мои заказы</h1>
+                
+                <span class="orders-count">Всего: 2</span>
+                
+                <div class="orders-header">
+                    <div>Название</div>
+                    <div>Прогресс</div>
+                    <div></div>
+                </div>
+                
+                <div class="orders-grid">
+
+                    <div class="order-card">
+                        <div class="order-title">Тревелблог про Чикаго</div>
+                        <div class="order-status status-accepted">Принят</div>
+                        <button class="details-button">Подробнее</button>
+                    </div>
+                    
+
+                    <div class="order-card">
+                        <div class="order-title">Видеоролик "Культурные различия Китая и России"</div>
+                        <div class="order-status status-in-progress">В процессе...</div>
+                        <button class="details-button">Подробнее</button>
+                    </div>
+                
+                </div>
+
+                <div class="history-button-container">
+                    <a href="order-history.html" class="history-button">Добавить заказ</a>
+                </div>
+                
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>

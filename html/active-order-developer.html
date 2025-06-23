@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монтаж выпуска про Чикаго - МонтажКлик</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 58px;
+            width: 354px;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 80px; 
+        }
+
+        .app-sidebar {
+        width: 280px;
+        background-color: #fff;
+        border-right: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 30px 0;
+        box-sizing: border-box;
+        }
+
+        .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        }
+
+        .sidebar-top, .sidebar-bottom {
+        list-style: none;
+        padding: 0 20px;
+        margin: 0;
+        }
+
+        .sidebar-bottom {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        }
+
+        .sidebar-nav a {
+        display: block;
+        padding: 12px 15px;
+        color: #666;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+        background: #f5f5f5;
+        color: #000;
+        }
+
+        .sidebar-nav .active {
+        color: #000;
+        background: #f0f0f0;
+        }
+
+        .logout-link {
+        color: #FF6464 !important;
+        }
+
+        .app-main {
+            flex: 1;
+            padding: 40px;
+            background: #f9f9f9;
+        }
+
+        .order-status-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .order-status {
+            width: 180px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #70E453;
+            text-align: center;
+            padding: 15px 30px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .decline-button {
+            width: 422px;
+            height: 60px;
+            padding: 15px 30px;
+            background-color: #FF6464;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .decline-button:hover {
+            background-color: #E55353;
+        }
+
+        .order-section h2 {
+            font-size: 30px;
+            text-align: center;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-list {
+            font-size: 24px;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .task-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .task-item label {
+            font-size:24px;
+            cursor: pointer;
+        }
+        
+        .task-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 21px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .task-item label b {
+            font-size: 24px;
+        }
+        
+        .task-item[style*="margin-left: 28px"] label {
+            font-size: 24x;
+        }
+
+        .order-header {
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden; 
+        }
+
+        .order-header-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            align-items: flex-start;
+            padding: 20px;
+            color: #fff; 
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .order-header-info h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .order-header-info p {
+            font-style: italic;
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .order-date {
+            font-style: italic;
+            color: #eee;
+        }
+
+        .order-image {
+            width: 100%;
+            height: 277px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* Остальные стили */
+        .order-description {
+            margin-bottom: 24px;
+        }
+
+        .order-description h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .order-info {
+            margin-bottom: 20px;
+        }
+
+        .order-info p {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            background-color: #fff;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+</style>
+</head>
+<body>
+    <div class="app-container">
+
+        <header class="header">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="../img/logo.png" alt="МонтажКлик" >
+                </a>
+            </div>
+        </header>
+
+        <aside class="app-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="sidebar-top">
+                    
+                    <li><a href="orders.html">Доступные заказы</a></li>
+                    <li><a href="#"  class="active">Мои заказы</a></li>
+                    <li><a href="#">Отзывы</a></li>
+                    <li><a href="#">Личный кабинет</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                </ul>
+                
+                <ul class="sidebar-bottom">
+                    <li><a href="#">Поддержка</a></li>
+                    <li><a href="#">O Sharix</a></li>
+                    <li><a href="#" class="logout-link">Выйти</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="app-main">
+            <section class="order-details">
+                <div class="order-header">
+                    <img src="../img/chicago.png" alt="Монтаж выпуска про Чикаго" class="order-image">
+                    <div class="order-header-info">
+                        <h1>Заказ от: Ксения</h1>
+                        <p class="order-date">19.09.2024</p>
+                    </div>
+                </div>
+        
+                <div class="order-info">
+                    <p><b>Задача:</b> Смонтировать тревелблог про Чикаго для канала UwuBlog. Подробнее со стилем монтажа можете ознакомиться, посмотрев предыдущие видео на канале.</p>
+                    <p><b>Дополнительные комментарии:</b>  Много анимаций и переходов.</p>
+                    <p><b>Длительность:</b> ~60 минут</p>
+                    <p><b>Референсы:</b></p>
+                    <p><b>Описание:</b> Выстроить сюжет видео и добавить аудиовставки из прикрепленных материалов.</p>
+                    <p><b>Срок выполнения:</b> С 1 ноября по 14 ноября.</p>
+                    <p><b>Оплата:</b> до 50.000₽</p>
+                </div>
+        
+            </section>
+            <div class="order-section">
+                    <h2>Прогресс заказа</h2>
+                    <div class="task-list">
+                        <div class="task-item">
+                            <input type="checkbox" id="started">
+                            <label for="started">Начато редактирование</label>
+                        </div>
+                        <div class="task-item">
+                            <label for="tasks"><b>Задачи:</b></label>
+                        </div>
+                        <div class="task-item" style="margin-left: 28px;">
+                            <input type="checkbox" id="subtitles">
+                            <label for="subtitles">Добавление субтитров</label>
+                        </div>
+                        <div class="task-item" style="margin-left: 28px;">
+                            <input type="checkbox" id="color">
+                            <label for="color">Цветокоррекция</label>
+                        </div>
+                        <div class="task-item" style="margin-left: 28px;">
+                            <input type="checkbox" id="music">
+                            <label for="music">Добавление музыки</label>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="review">
+                            <label for="review">Отправлено на проверку</label>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="completed">
+                            <label for="completed">Заказ завершен</label>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="order-status-container">
+            <span class="order-status">Заказ принят</span>
+            <button class="decline-button">Отказаться от заказа</button>
+        </div>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 МонтажКлик</p>
+        </div>
+    </footer>
+    </div>
+</body>
+</html>

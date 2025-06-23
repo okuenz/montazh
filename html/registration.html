@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МонтажКлик - Регистрация</title>
+    <link rel="stylesheet" href="../css/style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="register-container">
+        <div class="register-header">
+            <img src="../img/logo.png" class="logo" />
+            <h2>Регистрация</h2>
+        </div>
+
+        <form class="register-form">
+            <label for="name-fields">Авторизуйтесь за секунду</label>
+            <div class="name-fields">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Имя" required>
+                </div>
+    
+                <div class="input-group">
+                    <input type="text" id="surname" placeholder="Фамилия" required>
+                </div>
+            </div>
+
+            <div class="contact-fields">
+                <div class="input-group">
+                    <input type="tel" id="phone" placeholder="Номер телефона" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            <div class="pass-rep">
+                <div class="input-group single-field">
+                    <input type="password" id="password" placeholder="Пароль" required>
+                </div>
+                <div class="input-group single-field">
+                    <input type="password" id="password" placeholder="Повторите пароль" required>
+                </div>
+            </div>
+
+            <button type="submit" class="register-button">Создать аккаунт</button>
+        </form>
+
+        <div class="register-footer">
+            <p>Есть аккаунт? <a href="#" class="login-link">Войти</a></p>
+        </div>
+    </div>
+</body>
+</html>
