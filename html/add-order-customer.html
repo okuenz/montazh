@@ -331,4 +331,52 @@
         </main>
     </div>
 </body>
+<script>
+
+    document.querySelector('.order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const orderData = {
+            title: this.querySelector('input[type="text"]').value,
+            description: this.querySelector('textarea').value,
+            tasks: Array.from(this.querySelectorAll('.task-item input')).map(input => input.value),
+            reference: this.querySelector('input[type="url"]').value,
+            duration: this.querySelectorAll('.duration-budget input[type="text"]')[0].value,
+            budget: this.querySelectorAll('.duration-budget input[type="text"]')[1].value,
+            deadline: this.querySelector('input[type="date"]').value,
+            comments: this.querySelectorAll('textarea')[1].value,
+            status: 'Принят', // Статус по умолчанию
+            date: new Date().toLocaleDateString() // Текущая дата
+        };
+
+        //localStorage. f12
+        saveOrder(orderData);
+        
+        window.location.href = 'my-orders-developer.html';
+    });
+
+    // добавление доп задач при создании заказа
+    document.querySelector('.add-task-btn').addEventListener('click', function() {
+        const tasksList = document.querySelector('.tasks-list');
+        const newTask = document.createElement('div');
+        newTask.className = 'task-item';
+        newTask.innerHTML = `
+            <input type="text" placeholder="Новая задача" class="form-control">
+            <button type="button" class="remove-task-btn">×</button>
+        `;
+        tasksList.insertBefore(newTask, this);
+        
+        //обраб. удаления
+        newTask.querySelector('.remove-task-btn').addEventListener('click', function() {
+            tasksList.removeChild(newTask);
+        });
+    });
+
+    //сохранить закзаз
+    function saveOrder(order) {
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+    }
+</script>
 </html>
